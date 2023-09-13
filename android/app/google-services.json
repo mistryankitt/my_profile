@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748808585022",
+    "project_id": "my-profile-interview",
+    "storage_bucket": "my-profile-interview.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748808585022:android:77535b62608d7ffedb766f",
+        "android_client_info": {
+          "package_name": "com.ingenious.my_profile.my_profile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2boEa_8YT3ZQ3V1_-fHhT7KF-WDGdIGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
