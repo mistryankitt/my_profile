@@ -39,58 +39,57 @@ class LoginPage extends StatelessWidget {
             child: Center(
                 child: Padding(
               padding: const EdgeInsets.all(30.0).r,
-              child: Expanded(
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: UiConstant.frostedGlassDecoration(),
-                  child: Form(
-                    key: cubit.formKey,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        UiConstant.normalText("Welcome", 20),
-                        gapHeightSize15,
-                        CTextFieldWidget(
-                          hintText: "Username",
-                          myControllers: cubit.usernameController,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "username can't be empty";
-                            }
-                          },
-                        ),
-                        gapHeightSize15,
-                        CTextFieldWidget(
-                          hintText: "Password",
-                          textSecure: true,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "password can't be empty";
-                            }
-                          },
-                          myControllers: cubit.passwordController,
-                        ),
-                        gapHeightSize15,
-                        CustomButtonWidget(
-                            text: "Sign in",
-                            onTap: () {
-                              cubit.loginUserM();
-                            }),
-                        gapHeightSize15,
-                        CustomButtonWidget(
-                            text: "Sign in with google ",
-                            isIcon: true,
-                            iconWidget: SvgPicture.asset(
-                              Assets.iconsGoogle,
-                              fit: BoxFit.contain,
-                              height: MediaQuery.sizeOf(context).height *0.06,
-                              width: MediaQuery.sizeOf(context).width *0.06,
-                            ),
-                            onTap: () {
-                              cubit.googleSignInM();
-                            })
-                      ],
-                    ),
+              child: Container(
+                width: 500.w,
+                padding: const EdgeInsets.all(20),
+                decoration: UiConstant.frostedGlassDecoration(),
+                child: Form(
+                  key: cubit.formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      UiConstant.normalText("Welcome", 20),
+                      gapHeightSize15,
+                      CTextFieldWidget(
+                        hintText: "Username",
+                        myControllers: cubit.emailController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "username can't be empty";
+                          }
+                        },
+                      ),
+                      gapHeightSize15,
+                      CTextFieldWidget(
+                        hintText: "Password",
+                        textSecure: true,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "password can't be empty";
+                          }
+                        },
+                        myControllers: cubit.passwordController,
+                      ),
+                      gapHeightSize15,
+                      CustomButtonWidget(
+                          text: "Sign in",
+                          onTap: () {
+                            cubit.loginUserM();
+                          }),
+                      gapHeightSize15,
+                      CustomButtonWidget(
+                          text: "Sign in with google ",
+                          isIcon: true,
+                          iconWidget: SvgPicture.asset(
+                            Assets.iconsGoogle,
+                            fit: BoxFit.contain,
+                            height: MediaQuery.sizeOf(context).height * 0.02,
+                            width: MediaQuery.sizeOf(context).width * 0.02,
+                          ),
+                          onTap: () {
+                            cubit.googleSignInM();
+                          })
+                    ],
                   ),
                 ),
               ),

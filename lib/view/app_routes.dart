@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_profile/view/edit/view.dart';
 import 'package:my_profile/view/home/view.dart';
 import 'package:my_profile/view/login/view.dart';
 import 'package:my_profile/view/splash/view.dart';
@@ -19,6 +20,8 @@ class AppRoutes {
         return route(LoginPage());
       case homePage:
         return route(HomePage());
+        case editProfilePage:
+        return route(EditPage());
     }
     return null;
   }

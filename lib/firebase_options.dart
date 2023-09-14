@@ -62,10 +62,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAntgZhexDiWtIGnLGENghbkma0z4JG-Ds',
-    appId: '1:748808585022:ios:ce957a9b29189718db766f',
+    appId: '1:748808585022:ios:2c4e971e2c95d44cdb766f',
     messagingSenderId: '748808585022',
     projectId: 'my-profile-interview',
     storageBucket: 'my-profile-interview.appspot.com',
+    androidClientId: '748808585022-it0hk78grq7p7dngdr9vukm65bug418i.apps.googleusercontent.com',
+    iosClientId: '748808585022-4572kaq0i4l0hra76hcqqf56jndfap5l.apps.googleusercontent.com',
     iosBundleId: 'com.ingenious.myprofile.myProfile',
   );
 
@@ -75,6 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '748808585022',
     projectId: 'my-profile-interview',
     storageBucket: 'my-profile-interview.appspot.com',
+    androidClientId: '748808585022-it0hk78grq7p7dngdr9vukm65bug418i.apps.googleusercontent.com',
+    iosClientId: '748808585022-a9405sd41mgeskc55lq3ld7n30bu9msq.apps.googleusercontent.com',
     iosBundleId: 'com.ingenious.myprofile.myProfile.RunnerTests',
   );
 }

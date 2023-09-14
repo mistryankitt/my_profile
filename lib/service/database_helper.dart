@@ -4,52 +4,46 @@ import 'package:hive/hive.dart';
 import 'package:my_profile/model/user_model.dart';
 
 class UserAccountDataBase {
-  List users = [];
+  final myBox = Hive.box('users');
 
+  List<dynamic> users = [
+    UserModel(
+      uid: "0",
+      email: "ankitmistry1999@outlook.com",
+      password: "ankitmistry",
+      name: "ankit mistry",
+      skills: "flutter, dart, hive, socket.io, firebase",
+      experience: "i've 1.5 year experience in flutter",
+    ),
+  ];
 
-  // run this method if this is the 1st time ever opening this app
-  void createInitialData() {
-    users = [
-      UserModel(
-        uid: "0",
-        username: "ankitmistry1999@gmail.com",
-        password: "ankitmistry",
-      ),
-      UserModel(
-        uid: "1",
-        username: "ankit",
-        password: "mistry",
-      ),
-      UserModel(
-        uid: "2",
-        username: "mistry",
-        password: "ankit",
-      )
-    ];
-    updateDataBase();
+  Future<void> updateDetails(UserModel userModel) async {
+    log(userModel.name.toString());
+    List<dynamic> users = myBox.get("USERSLIST");
+    final userIndex =
+        users.indexWhere((element) => element.uid == userModel.uid);
+    log(userIndex.toString());
+    users[userIndex] = userModel;
+    await myBox.put("USERSLIST", users);
 
+    for (UserModel user in users) {
+      log("name : ${user.name}");
+
+    }
   }
 
-  // load the data from database
   void loadData() async {
-    final box = Hive.box("users");
+    log("is user list is empty ?: ${await myBox.get("USERSLIST") == null}");
 
-    users = await box.get("USERSLIST");
-    updateDataBase();
+    if (await myBox.get("USERSLIST") == null) {
+      // If the data is not present in Hive, initialize it
+      myBox.put("USERSLIST", users);
+    } else {
+      // Load the data from Hive and cast it to List<UserModel>
+      List<dynamic> users = myBox.get("USERSLIST");
+      for (UserModel user in users) {
+        log("Email: ${user.email}");
+      }
+    }
   }
-
-  // update the database
-  void updateDataBase() async {
-    final box = Hive.box("users");
-    box.put("USERSLIST", users);
-    log("${await box.get("USERSLIST")}");
-  }
-
-
-
-
-
-
-
-
 }

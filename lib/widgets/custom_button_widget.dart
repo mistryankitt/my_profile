@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_profile/utils/ui_const.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -57,7 +58,7 @@ class CustomButtonWidget extends StatelessWidget {
                 borderSide:
                     const BorderSide(color: Colors.black87, width: 0.0)),
         child: SizedBox(
-            height: MediaQuery.sizeOf(context).height *0.08,
+            height: 40.h,
             width: MediaQuery.of(context).size.width,
             child: isIcon
                 ? Center(

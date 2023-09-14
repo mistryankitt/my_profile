@@ -4,7 +4,9 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:my_profile/service/database_helper.dart';
+import 'package:my_profile/utils/const.dart';
 import 'package:my_profile/view/app_routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'state.dart';
 
@@ -14,14 +16,21 @@ class SplashCubit extends Cubit<SplashState> {
   UserAccountDataBase db = UserAccountDataBase();
 
   /// splash screen to navigate on Boarding screen
-  void loadSplashScreen() {
-    db.createInitialData();
+  loadSplashScreen() {
+    db.loadData();
     Timer(const Duration(seconds: 2), () async {
-      scaffoldKey.currentContext != null
-          ? Navigator.pushNamedAndRemoveUntil(scaffoldKey.currentContext!,
-              AppRoutes.loginPage, (route) => false)
-          :     log("message");
-
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      if (preferences.getString(Constant.loginIdSaved) != null) {
+        scaffoldKey.currentContext != null
+            ? Navigator.pushNamedAndRemoveUntil(scaffoldKey.currentContext!,
+                AppRoutes.homePage, (route) => false)
+            : null;
+      }else{
+        scaffoldKey.currentContext != null
+            ? Navigator.pushNamedAndRemoveUntil(scaffoldKey.currentContext!,
+            AppRoutes.loginPage, (route) => false)
+            : null;
+      }
     });
   }
 }

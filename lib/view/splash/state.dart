@@ -3,6 +3,7 @@ import 'package:my_profile/service/service_locator.dart';
 import 'package:my_profile/view/splash/cubit.dart';
 
 class SplashState {
+
   SplashState init() {
     return SplashState();
   }
@@ -10,5 +11,4 @@ class SplashState {
   SplashState clone() {
     return SplashState();
   }
-
 }

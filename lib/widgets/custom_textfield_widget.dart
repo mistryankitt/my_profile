@@ -26,6 +26,8 @@ class CTextFieldWidget extends StatefulWidget {
   final bool readOnly;
   final VoidCallback? onPressedSuffixIcon;
 
+  final void Function(String?)? onSaved;
+
   const CTextFieldWidget({
     Key? key,
     this.helperText,
@@ -49,7 +51,7 @@ class CTextFieldWidget extends StatefulWidget {
     this.onEditingComplete,
     this.isSuffixIcon = false,
     this.suffixIconString,
-    this.onPressedSuffixIcon,
+    this.onPressedSuffixIcon, this.onSaved,
   }) : super(key: key);
 
   @override
@@ -68,6 +70,7 @@ class _CTextFieldWidgetState extends State<CTextFieldWidget> {
       controller: widget.myControllers,
       autofillHints: widget.autofillHints?.toList(),
       autocorrect: false,
+      onSaved: widget.onSaved,
       keyboardType: widget.keyboardTypeValidation,
       readOnly: widget.readOnly,
       decoration: InputDecoration(

@@ -24,11 +24,12 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     namespace "com.ingenious.my_profile.my_profile"
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion "25.2.9519653"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -40,10 +41,12 @@ android {
         applicationId "com.ingenious.my_profile.my_profile"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
+
     }
 
     buildTypes {
@@ -57,4 +60,13 @@ android {
 
 flutter {
     source '../..'
+}
+
+
+dependencies {
+
+    implementation 'com.google.firebase:firebase-auth:22.1.1' // Use the latest version
+
+    implementation 'com.google.android.gms:play-services-auth:20.7.0'
+
 }
