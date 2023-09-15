@@ -11,9 +11,10 @@ import 'package:my_profile/widgets/custom_textfield_widget.dart';
 import 'package:rive/rive.dart';
 
 import 'cubit.dart';
-import 'state.dart';
 
 class EditPage extends StatelessWidget {
+  const EditPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -32,12 +33,12 @@ class EditPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Edit Profile"),
+          title: const Text("Edit Profile"),
           actions: [
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ActionChip(
-                label: Text("Save"),
+                label: const Text("Save"),
                 onPressed: () {
                   cubit.updateProfile();
                 },
@@ -66,9 +67,9 @@ class EditPage extends StatelessWidget {
                     builder: (context, snapshot) {
 
                       if(snapshot.data == null){
-                        return CircularProgressIndicator.adaptive();
+                        return const CircularProgressIndicator.adaptive();
                       }
-                      return Container(
+                      return SizedBox(
                         height: 400.h,
                         child: SingleChildScrollView(
                           child: Column(
@@ -89,6 +90,7 @@ class EditPage extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return "email can't be empty";
                                   }
+                                  return null;
                                 },
                               ),
                               gapHeightSize15,
@@ -99,6 +101,7 @@ class EditPage extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return "name can't be empty";
                                   }
+                                  return null;
                                 },
                               ),
                               gapHeightSize15,

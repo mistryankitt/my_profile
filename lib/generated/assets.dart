@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String iconsGoogle = 'assets/icons/google.svg';
+  static const String imageProfile = 'assets/images/profile.jpg';
   static const String riveBack = 'assets/rive/back.riv';
   static const String riveLoading = 'assets/rive/loading.riv';
 

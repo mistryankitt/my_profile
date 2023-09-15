@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:my_profile/utils/const.dart';
 import 'package:my_profile/utils/ui_const.dart';
@@ -32,12 +31,12 @@ class AuthService {
 
 
       return userCredential;
-;
     } catch (e) {
       // Handle any exceptions that may occur during the process.
       log('Error during Google Sign-In: $e');
       UiConstant.customToastShow('An error occurred during Google Sign-In.');
     }
+    return null;
   }
 
   static signOutGoogle() async {

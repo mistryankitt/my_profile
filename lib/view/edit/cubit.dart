@@ -1,13 +1,11 @@
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:my_profile/model/user_model.dart';
 import 'package:my_profile/service/database_helper.dart';
 import 'package:my_profile/service/service_locator.dart';
 import 'package:my_profile/utils/const.dart';
-import 'package:my_profile/view/home/state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'state.dart';

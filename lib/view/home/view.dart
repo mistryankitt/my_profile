@@ -3,9 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:my_profile/generated/assets.dart';
-import 'package:my_profile/model/user_model.dart';
+import 'package:my_profile/utils/const.dart';
 import 'package:my_profile/utils/size.dart';
 import 'package:my_profile/utils/ui_const.dart';
 import 'package:my_profile/view/app_routes.dart';
@@ -31,12 +30,12 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Profile"),
+        title: const Text("My Profile"),
         actions: [
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: ActionChip(
-              label: Text("signout"),
+              label: const Text("signout"),
               onPressed: () {
                 cubit.signOut();
               },
@@ -67,57 +66,51 @@ class HomePage extends StatelessWidget {
                       builder: (context, state) {
                         if (state is UserDataLoaded) {
                           final userModel = state.userModel;
-                          return Container(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      gapHeightSize15,
-                                      UiConstant.normalText("Email :\n${userModel.email}", 14),
-                                      gapHeightSize15,
-                                      UiConstant.normalText("Name :\n${userModel.name}", 14),
-                                      gapHeightSize15,
-                                      userModel.skills!.isEmpty
-                                          ? Container()
-                                          : UiConstant.normalText("Skills :\n${userModel.skills}", 14),
-                                      gapHeightSize15,
-                                      userModel.experience!.isEmpty
-                                          ? Container()
-                                          : UiConstant.normalText(
-                                        "Experience :\n${userModel.experience}",
-                                        14,
-                                      ),
-                                      gapHeightSize15,
-                                      CustomButtonWidget(
-                                        text: "Edit profile",
-                                        onTap: () {
-                                          Navigator.pushNamed(
-                                            context,
-                                            AppRoutes.editProfilePage,
-                                          ).then((value) {
-                                            cubit.getUserInfo();
-                                          });
-                                        },
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                ClipOval(
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Center(
+                                child: ClipOval(
                                   child: Image.network(
-                                    userModel.profile!,
+                                    userModel.profile ?? Constant.defaultImage,
                                     fit: BoxFit.cover,
                                     height: 120,
                                     width: 120,
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              gapHeightSize15,
+                              UiConstant.normalText("Email :\n${userModel.email}", 14),
+                              gapHeightSize15,
+                              UiConstant.normalText("Name :\n${userModel.name}", 14),
+                              gapHeightSize15,
+                              userModel.skills!.isEmpty
+                                  ? Container()
+                                  : UiConstant.normalText("Skills :\n${userModel.skills}", 14),
+                              gapHeightSize15,
+                              userModel.experience!.isEmpty
+                                  ? Container()
+                                  : UiConstant.normalText(
+                                "Experience :\n${userModel.experience}",
+                                14,
+                              ),
+                              gapHeightSize15,
+                              CustomButtonWidget(
+                                text: "Edit profile",
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    AppRoutes.editProfilePage,
+                                  ).then((value) {
+                                    cubit.getUserInfo();
+                                  });
+                                },
+                              )
+                            ],
                           );
                         } else {
-                          return CircularProgressIndicator.adaptive();
+                          return const CircularProgressIndicator.adaptive();
                         }
                       },
                     );

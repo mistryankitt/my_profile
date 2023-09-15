@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:my_profile/model/user_model.dart';
 import 'package:my_profile/service/auth_service.dart';
@@ -28,6 +28,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   void loginUserM() async {
     if (formKey.currentState!.validate()) {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
       log("${db.users.indexWhere((user) => user.email == emailController.text && user.password == passwordController.text)}");
       log(emailController.text);
       log(passwordController.text);
@@ -35,6 +37,8 @@ class LoginCubit extends Cubit<LoginState> {
               user.email == emailController.text &&
               user.password == passwordController.text) >=
           0) {
+        prefs.setString(Constant.loginIdSaved, "0");
+
         Navigator.pushNamedAndRemoveUntil(
             navigatorKey.currentContext!, AppRoutes.homePage, (route) => false);
       } else {

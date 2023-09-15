@@ -1,14 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:my_profile/model/user_model.dart';
 import 'package:my_profile/service/service_locator.dart';
 import 'package:my_profile/utils/colors.dart';
 import 'package:my_profile/view/app_routes.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 
 import 'firebase_options.dart';
 

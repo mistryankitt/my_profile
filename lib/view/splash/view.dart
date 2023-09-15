@@ -4,7 +4,6 @@ import 'package:my_profile/generated/assets.dart';
 import 'package:rive/rive.dart';
 
 import 'cubit.dart';
-import 'state.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -22,7 +21,7 @@ class SplashPage extends StatelessWidget {
     cubit.loadSplashScreen();
     return Scaffold(
       key: cubit.scaffoldKey,
-      body: RiveAnimation.asset(Assets.riveLoading,),
+      body: const RiveAnimation.asset(Assets.riveLoading,),
     );
   }
 }

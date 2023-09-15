@@ -15,13 +15,13 @@ class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case splashPage:
-        return route(SplashPage());
+        return route(const SplashPage());
       case loginPage:
-        return route(LoginPage());
+        return route(const LoginPage());
       case homePage:
-        return route(HomePage());
+        return route(const HomePage());
         case editProfilePage:
-        return route(EditPage());
+        return route(const EditPage());
     }
     return null;
   }

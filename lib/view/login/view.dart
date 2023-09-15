@@ -12,9 +12,10 @@ import 'package:my_profile/widgets/custom_textfield_widget.dart';
 import 'package:rive/rive.dart';
 
 import 'cubit.dart';
-import 'state.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -57,6 +58,7 @@ class LoginPage extends StatelessWidget {
                           if (value!.isEmpty) {
                             return "username can't be empty";
                           }
+                          return null;
                         },
                       ),
                       gapHeightSize15,
@@ -67,6 +69,7 @@ class LoginPage extends StatelessWidget {
                           if (value!.isEmpty) {
                             return "password can't be empty";
                           }
+                          return null;
                         },
                         myControllers: cubit.passwordController,
                       ),
